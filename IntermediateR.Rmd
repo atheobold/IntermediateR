@@ -1,0 +1,77 @@
+---
+title: "Intermediate R"
+author: "Allison Theobold"
+output: pdf_document
+---
+
+# Relational Operators  
+
+Relational operators tell how one object relates to another. There are a variety of relational operators that you have used before in mathematics, but take on a slightly different feel in computer science. We will walk through a few examples of different relational operators and the rest will be left as exercises.   
+
+* __Equality & Inequality__: This type of operator tells whether an object is equivalent to another object, or its negation.  
+
+```{r equality}  
+# write R code to see if 
+    # TRUE equals FALSE.
+    # if -6 * 14 is not equal to 17 - 101  
+    # if the strings "useR" and "user" are equal 
+    # are TRUE and 1 equal?
+
+```
+
+* __Greater & Less__: These statements should be familiar, with a bit of a notation twist. To write a greater than or equal to statement you would you ``= >`` in your statement, and similarly with less than or equal to.  
+
+```{r greaterLess}
+# write R code to see if
+    # -6 * 5 + 2 is greater than or equal to -10 + 1
+    # "raining" is less than or equal to "raining dogs"  
+    # TRUE is greater than FALSE
+```
+
+* __Matricies__: For matricies the above relational statements can be applied across the entire matrix, or to a subset of the matrix (a vector). The relational statement are applied elementwise (a stepwise progression through the entries) 
+
+```{r matricies}
+# These dating data, of messages received per week, have been created for you
+
+okcupid <- c(16, 9, 13, 5, 2, 17, 14)
+match <- c(17, 7, 5, 16, 8, 13, 14)
+messages <- matrix(c(okcupid, match), nrow = 2, byrow = TRUE)
+
+# Use the messages matrix to return a logical matrix that answers the following questions:
+
+  # When were the messages equal to 13?
+  # For which days were the number of messages less than or equal to 14? 
+```
+
+# Logicals  
+
+These statements allow for us to change or combine the results of the relational statements we discussed before, using "and", "or", or "not". 
+
+* __"and"__ statements evaluate to ``TRUE`` \underline{only if every} relational statement evaluates to ``TRUE``. For example, ``(3 < 5) & (9 > 7)`` would evaluate to ``TRUE`` because \underline{both} relational statements are ``TRUE``. If instead we had ``(3 > 5) & (9 > 7)``, this would evaluate to ``FALSE`` as the first relational statement is ``FALSE``. 
+
+* __"or"__ statements evaluate to ``TRUE`` \underline{if at least one} relational statement evaluates to ``TRUE``. For example, ``(3 > 5) | (9 > 7)`` would evaluate to ``TRUE`` because \underline{one} of the relational statements is ``TRUE`` (the second one). If instead we had ``(3 > 5) & (9 < 7)``, this would evaluate to ``FALSE`` as both relational statements evaluate to ``FALSE``.  
+
+* __Remark:__ The ``&&`` and ``||`` logical statements \underline{do not} evaluate the same as their single counterparts. Instead, these logical operators evaluate to ``TRUE`` or ``FALSE`` based \underline{only} on the first element of the statement, vector, or matrix.  
+
+```{r logicals}
+# Using the messages data from above, answer the following questions. 
+
+    # Is last under 5 or above 10? 
+    # Is last between 15 and 20, excluding 15 but including 20?
+```
+
+## Logicals in Your Daily (Statistics) Life  
+
+Many of you may be wondering how the topics above relate to your daily lives in statistical practices, but wait! Let's play with some data some functions that are likely very familiar to you. Import the BlackfootFish dataset and carry out the following questions:  
+
+*  Which fish do no have \underline{both} length and weight recorded? (hint: use relational operators, logicals, and the ``which`` or ``subset`` functions)  
+
+* Remove the fish you found from the dataset, renaming the new dataset ``BlackfootFish2``. 
+
+* Subset the data so that only the Rainbow Trout (RBT) and Brown Trout (Brown) remain. 
+
+```{r logicalPractice}
+
+```
+
+
