@@ -28,7 +28,7 @@ Relational operators tell how one object relates to another. There are a variety
     # TRUE is greater than FALSE
 ```
 
-* __Matricies__: For matricies the above relational statements can be applied across the entire matrix, or to a subset of the matrix (a vector). The relational statement are applied elementwise (a stepwise progression through the entries) 
+* __Matrices__: For matrices the above relational statements can be applied across the entire matrix, or to a subset of the matrix (a vector). The relational statement are applied element wise (a step-wise progression through the entries) 
 
 ```{r matricies}
 # These dating data, of messages received per week, have been created for you
@@ -116,7 +116,7 @@ else{
 
 ## Else If Statements  
 
-On occation, you may want to add a third (or forth, or fifth, ...) condition to your ``ifelse`` statement, which is where the ``elseif`` statement comes it. The ``elseif`` statement is added to the ``ifelse`` as follows:  
+On occasion, you may want to add a third (or forth, or fifth, ...) condition to your ``ifelse`` statement, which is where the ``elseif`` statement comes it. The ``elseif`` statement is added to the ``ifelse`` as follows:  
 
 \begin{center}
 \begin{verbatim}
@@ -140,36 +140,119 @@ else{
     + if the condition is ``FALSE`` the computer moves on to the ``else`` statement, and 
 * the third statement (``{statement3}``) is output. 
 
-```{r if}
+\vspace{0.25cm}
+
+```{r if, tidy = TRUE}
 # Using the message dataset, write an if statement that prints "You're popular!" if the number of messages exceeds 10
 ```
 
-```{r else}
+```{r else, tidy = TRUE}
 # Using the if statements above add the following:  
     # When the if-condition on messages is not met, R prints out "Send more messages!" 
 ```
 
-```{r elseif}
+```{r elseif, tidy = TRUE}
 # Using the ifelse statement above add the following:  
     # "Your number of views is average" is printed if messages is between 15 (inclusive) and 10 (exclusive). 
 ```
 
+\pagebreak
+
 # Combine It All!  
 
-```{r combine1}
+```{r combine1, eval = FALSE}
 
 # Variables related to your last day of recordings
-li <- 15
-fb <- 9
+ma <- tail(match, 1)
+ok <- tail(okcupid, 1)
 
 # Code the control-flow construct
 if (___ & ___) {
   sms <- 2 * (li + fb)
-} ___ (___) {
+} elseif (___) {
   sms <- 0.5 * (li + fb)
 } else {
   sms <- ___
 }
 
-# Print the resulting sms to the console
+# 1. If both ma and ok are 15 or higher, set sms equal to double the sum of ma and ok.
+# 2. If both ma and ok are strictly below 10, set sms equal to half the sum of ma and ok.
+# 3. In all other cases, set sms equal to ma + ok.
+# 4. Print the resulting sms variable to the console.
 ```
+
+\pagebreak 
+
+# Loops  
+
+Loops are a popular way to iterate or replicate a set of instructions. It is no more than creating an automated process by organizing a sequence of steps and grouping the steps that need to be repeated. In general, the advice of many ``R`` users would be to learn about loops, but once you have a clear understanding of them to get rid of them. Loops will give you a detailed view of what is happening and the data you are manipulating. Once you have this understanding, you should put your effort into learning about vectorized alternatives as they pay off in efficiency. These loop alternatives (the apply family) will be covered in the _Simulation Workshop_.  
+
+Typically in computer science, we separate loops into two types. The loops that execute a process a specified number of times, where the "index" or "counter" is incremented after each cycle are part of the ``for`` loop family. On the other hand, other loops only repeat themselves until a conditional statement is evaluated to be ``FALSE``. These conditional loops belong to the ``while`` family.
+
+![Loop Flowchart ](loop_flowchart.png)
+
+## For Loops  
+
+In the for loop figure above:   
+
+* The rectangular `init` box represents the initialization of the object being used in the for loop (i.e. the variable). This initialization is \underline{required} in ``R``, as opposed to other languages, such as Python, where an initialization does not have to occur.  
+
+* The diamond shapes represent the repeat decision the computer is required to make. The computer evaluates the conditional statement ($v \in seq$) as either ``TRUE`` or ``FALSE``. In other terms, you are testing if in the current value of $v$ is within the specified range of values $seq,$ where this range is defined in the initialization (like 1:100).  
+
+* The second `i1` rectangle represents the set of instructions to execute for every iteration. This could be a simple statement, a block of instructions, or another loop (nested loops).  
+
+The computer marches through this process until the the conditional statement evaluates to ``FALSE`` ($v \notin seq$).  
+
+### Notation  
+
+The for loop is placed between curly braces, which can be placed either directly after the test condition or beneath it. You will find the formatting that you like best for things such as loops and functions, but here is my preferred syntax.  
+
+\begin{center}
+\begin{verbatim}
+for(i in 1:n){
+              statement
+}
+\end{verbatim}
+\end{center}
+
+\vspace{0.25cm}
+
+```{r forloop}
+# Create a vector filled with random t-values, from a distribution with 32 degrees of freedom 
+
+sim <- 100
+u <- rt(sim, 32)
+print("This loop calculates the square of the elements of vector u")
+
+# Initialize `usq` (could have used a 0 initialization)
+usq <- NA
+
+for(i in 1:sim) {
+  # i-th element of `u1` squared into `i`-th position of `usq`
+  usq[i] <- u[i]^2
+}
+
+print(i) ## should be the same as sim, unless the loop had issues!
+```
+
+### Nesting For Loops  
+
+Now that you know that for loops can also be nested, you're probably wondering when and why you would be using this in your code.  
+
+```{r nestedloops}
+# Create a matrix probabilities of drawing binomials 0-5, from a population of 5, a sample size of 2, and probabilities going from 0-1 by 0.1
+x <- 0:5
+theta <- seq(0, 1, by = 0.1)
+
+probs <- matrix(NA, nrow = length(x), ncol = length(seq(0, 1, by = 0.1)))
+
+# For each row and for each column, assign values based on position: product of two indexes
+for(i in 1:length(x)){
+  for(j in 1:length(theta)){
+    probs[i,j] = dbinom(x[i], 5, theta[j])
+  }
+}
+probs
+```
+## While Loops  
+
