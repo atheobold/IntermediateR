@@ -256,3 +256,94 @@ probs
 ```
 ## While Loops  
 
+The ``while`` loop takes on a similar structure to the ``for`` loop, except that the diamond block now __explicitly__ represents a logical condition. In a ``for`` loop, the only job of this block was to verify that the "counter" of the loop ($i$) was still in the specified range. Now this conditional statement is typically expressed using a relational statement between a "control variable" and a value.   
+
+
+* If the result of the relational statement is ``FALSE``, the loop is never executed (similar to the "counter" being outside the sequence of numbers). 
+
+* If the result of the relational statement is ``TRUE``, the block of instructions `i1` is executed, and 
+    + the "control variable" is updated in `i2`.  
+    
+    
+For example, here is how we could rewrite the first for loop as a while loop:  
+
+```{r while}
+sim <- 100
+u <- rt(sim, 32)
+
+
+usq <- 0  # Initialize `usq`
+i <- 1  # Initialize the "control variable"
+
+while(i %in% 1:sim){
+  # i-th element of `u1` squared into `i`-th position of `usq`
+  usq[i] <- u[i]^2
+  i <- i + 1
+}
+```
+
+\pagebreak
+
+# Functions  
+
+What is a function? In rough terms a function is a set of instructions that you would like repeated (similar to a loop), but are better self-contained in a sub-program and called upon when needed. A function is a piece of code that carries out a specific task, accepting arguments (inputs) and returning values (outputs).  Many different programming languages fuss over function terminology, but in ``R`` a function is a function!  
+
+In ``R`` the function you define (or use) will have the following construction:
+
+\begin{center}
+\begin{verbatim}
+functionName <- function(argument1, argument2, ...){
+                body
+}
+\end{verbatim}
+\end{center}
+
+But, at this point you may only be familiar with a smattering of ``R`` functions in a few different packages. Some of these functions take multiple arguments and return multiple outputs, but the best way to learn about the inner workings of functions is to write your own!  
+
+## User Defined Functions  
+
+Often you will be in the position where you need to perform a task, but you do not know of a function or a library that would help you. You could spend time Googling for some solution, but often in the amount of time it takes you to find something you could have already written your own function!   
+
+The function you build will have the same form as described above, where you select the name of the function, the arguments, and the outputs. Some important advice on writing your own functions:  
+
+* Make sure that the name you choose for your function \underline{is not} a reserved word in ``R`` (mean, sd, etc.).  
+* A way to avoid this is to use the help directory to see if that function name already exists (``? function name``).  
+* It is possible to overwrite the name of an existing function, but it is \underline{not} recommended!  
+
+\pagebreak
+
+__Practice:__ Write a function that computes the condition index for a given fish (condition index = $\frac{\text{weight}^{\frac{1}{3}}}{\text{length}} * 50$)  
+
+The function should take two arguments (a length and a weight)  
+
+\vspace{0.25cm}
+
+```{r function}
+BlackfootFish <- read.csv("BlackfootFish.csv")
+## function code here!
+```
+
+\vspace{0.25cm}
+
+Now, given the matrix of integers below, 
+    1. use a for loop and  
+    2. an ifelse statement, and  
+    3. the function you defined above,
+to compute the condition number of each fish, and remove that fish from the dataset if it's condition is NA or greater than 2.
+
+\vspace{0.25cm}
+
+```{r }
+
+matrix <- data.frame(l = BlackfootFish$length, w = BlackfootFish$weight)
+
+```
+
+\pagebreak 
+
+# References  
+
+https://www.datacamp.com/community/tutorials/functions-in-r-a-tutorial#gs.5ySzPg0
+
+https://www.datacamp.com/community/tutorials/tutorial-on-loops-in-r
+
