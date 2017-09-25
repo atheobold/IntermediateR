@@ -68,10 +68,74 @@ Many of you may be wondering how the topics above relate to your daily lives in 
 
 * Remove the fish you found from the dataset, renaming the new dataset ``BlackfootFish2``. 
 
-* Subset the data so that only the Rainbow Trout (RBT) and Brown Trout (Brown) remain. 
+* Subset these data so that only the Rainbow Trout (RBT) and Brown Trout (Brown) remain. 
 
 ```{r logicalPractice}
 
 ```
 
+# Conditional Statements  
 
+Conditional statements utilize relational statements and logicals to change the results of your ``R`` code. You may have encountered an ``ifelse`` statement before (or not), but let's breakdown exactly what ``R`` is doing when it evaluates them.  
+
+## If Statements  
+
+First, let's start with an ``if`` statement, the often overlooked building block of the ``ifelse`` statement. The ``if`` statement is structured as follows:  
+
+\begin{center}
+\begin{verbatim}
+if(condition){
+              statement
+}
+\end{verbatim}
+\end{center}
+
+* the condition inside the parenthesis is what the computer executes to verify that it is ``TRUE``,  
+* if the condition evaluates to ``TRUE`` then the statement inside the ``{}`` is output, and  
+* if the condition is ``FALSE`` nothing is output.
+
+## Else Statements  
+
+Since whenever an ``if`` statement evaluates to ``FALSE`` nothing is output, you might see why an ``else`` statement might be beneficial! An else statement allows for another statement to be output whenever the ``if`` condition evaluates to ``FALSE``. The ``ifelse`` statement is structured as follows:  
+
+\begin{center}
+\begin{verbatim}
+if(condition){
+              statement1
+}
+else{
+              statement2      
+}
+\end{verbatim}
+\end{center}
+
+* again, the ``if`` condition is executed first,  
+    + if it evaluates to ``TRUE`` then the first statement (``{statement1}``) is output,
+    + if the condition is ``FALSE`` the computer moves on to the ``else`` statement, and  
+* the second statement (``{statement2}``) is output. 
+
+## Else If Statements  
+
+On occation, you may want to add a third (or forth, or fifth, ...) condition to your ``ifelse`` statement, which is where the ``elseif`` statement comes it. The ``elseif`` statement is added to the ``ifelse`` as follows:  
+
+\begin{center}
+\begin{verbatim}
+if(condition1){
+              statement1
+}
+elseif(condition2){
+              statement2
+}
+else{
+              statement3      
+}
+\end{verbatim}
+\end{center}
+
+* The ``if`` condition is executed first,  
+    + if it evaluates to ``TRUE`` then the first statement (``{statement1}``) is output,
+    + if the condition is ``FALSE`` the computer moves on to the ``elseif`` condition,  
+* Now the second condition is executed, 
+    + if it evaluates to ``TRUE`` then the second statement (``{statement2}``) is output,
+    + if the condition is ``FALSE`` the computer moves on to the ``else`` statement, and 
+* the third statement (``{statement3}``) is output. 
