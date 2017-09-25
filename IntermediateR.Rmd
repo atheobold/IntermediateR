@@ -139,3 +139,37 @@ else{
     + if it evaluates to ``TRUE`` then the second statement (``{statement2}``) is output,
     + if the condition is ``FALSE`` the computer moves on to the ``else`` statement, and 
 * the third statement (``{statement3}``) is output. 
+
+```{r if}
+# Using the message dataset, write an if statement that prints "You're popular!" if the number of messages exceeds 10
+```
+
+```{r else}
+# Using the if statements above add the following:  
+    # When the if-condition on messages is not met, R prints out "Send more messages!" 
+```
+
+```{r elseif}
+# Using the ifelse statement above add the following:  
+    # "Your number of views is average" is printed if messages is between 15 (inclusive) and 10 (exclusive). 
+```
+
+# Combine It All!  
+
+```{r combine1}
+
+# Variables related to your last day of recordings
+li <- 15
+fb <- 9
+
+# Code the control-flow construct
+if (___ & ___) {
+  sms <- 2 * (li + fb)
+} ___ (___) {
+  sms <- 0.5 * (li + fb)
+} else {
+  sms <- ___
+}
+
+# Print the resulting sms to the console
+```
