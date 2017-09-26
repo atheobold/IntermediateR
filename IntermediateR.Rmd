@@ -64,7 +64,7 @@ These statements allow for us to change or combine the results of the relational
 
 Many of you may be wondering how the topics above relate to your daily lives in statistical practices, but wait! Let's play with some data some functions that are likely very familiar to you. Import the BlackfootFish dataset and carry out the following questions:  
 
-*  Which fish do no have \underline{both} length and weight recorded? (hint: use relational operators, logicals, and the ``which`` or ``subset`` functions)  
+* Which fish do no have \underline{both} length and weight recorded? (hint: use relational operators, logicals, and the ``which`` or ``subset`` functions)  
 
 * Remove the fish you found from the dataset, renaming the new dataset ``BlackfootFish2``. 
 
@@ -113,6 +113,18 @@ else{
     + if it evaluates to ``TRUE`` then the first statement (``{statement1}``) is output,
     + if the condition is ``FALSE`` the computer moves on to the ``else`` statement, and  
 * the second statement (``{statement2}``) is output. 
+
+\vspace{0.25cm}
+
+__Remark:__ ``R`` accepts both ``ifelse`` statements structured as outline above, but also ``ifelse`` statements using the built-in ``ifelse()`` function. The function is structured as follows: 
+\begin{center}
+\begin{verbatim}
+ifelse(condition, statement1, statement2),
+\end{verbatim}
+\end{center}
+
+where the first argument is the conditional statement, the second argument is the statement that is evaluated when the condition is ``TRUE``, and the third statement is the statement that is evaluated when the condition is ``FALSE``.  
+
 
 ## Else If Statements  
 
@@ -310,6 +322,41 @@ The function you build will have the same form as described above, where you sel
 * A way to avoid this is to use the help directory to see if that function name already exists (``? function name``).  
 * It is possible to overwrite the name of an existing function, but it is \underline{not} recommended!  
 
+__Examples:__  
+Here are some functions that I wrote. Let's look them over and find each of the following:  
+
+* what are the arguments?  
+
+* what are the outputs?  
+
+* what is being performed in the body of the function?  
+
+__1.__ 
+
+\begin{center}
+\begin{verbatim}
+fahr_to_kelvin <- function(temp){
+                    kelvin <- ((temp - 32) * (5 / 9)) + 273.15
+                    return(kelvin)
+}
+\end{verbatim}
+\end{center}
+
+__2.__ 
+
+\begin{center}
+\begin{verbatim}
+center <- function(data, center){
+            # returns a new vector containing the original data centered around the desired value
+            new_data <- (data - mean(data)) + center
+            return(new_data)
+}
+\end{verbatim}
+\end{center}
+
+__Remark:__ It is often useful, when writing a function or a loop to add a ``print()`` output. This allows for you to verify that the process is executing correctly and can save you some headaches!
+
+
 \pagebreak
 
 __Practice:__ Write a function that computes the condition index for a given fish (condition index = $\frac{\text{weight}^{\frac{1}{3}}}{\text{length}} * 50$)  
@@ -325,10 +372,11 @@ BlackfootFish <- read.csv("BlackfootFish.csv")
 
 \vspace{0.25cm}
 
-Now, given the matrix of integers below, 
-    1. use a for loop and  
+Now, given the matrix of integers below,  
+    1. use a for loop,    
     2. an ifelse statement, and  
-    3. the function you defined above,
+    3. the function you defined above,  
+    
 to compute the condition number of each fish, and remove that fish from the dataset if it's condition is NA or greater than 2.
 
 \vspace{0.25cm}
