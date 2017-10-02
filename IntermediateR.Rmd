@@ -6,29 +6,39 @@ output: pdf_document
 
 # Relational Operators  
 
-Relational operators tell how one object relates to another. There are a variety of relational operators that you have used before in mathematics, but take on a slightly different feel in computer science. We will walk through a few examples of different relational operators and the rest will be left as exercises.   
+Relational operators tell how one object relates to another. There are a variety of relational operators that you have used before in mathematics but take on a slightly different feel in computer science. We will walk through a few examples of different relational operators and the rest will be left as exercises.   
 
-* __Equality & Inequality__: This type of operator tells whether an object is equivalent to another object, or its negation.  
+* __Equality & Inequality__: This type of operator tells whether an object is equivalent to another object (``==``), or its negation (``!=``).  
 
-```{r equality}  
+\vspace{0.1cm}
+
+```{r equality}
+
+TRUE == FALSE
+-6*14 != 17-101
+
 # write R code to see if 
-    # TRUE equals FALSE.
-    # if -6 * 14 is not equal to 17 - 101  
     # if the strings "useR" and "user" are equal 
     # are TRUE and 1 equal?
 
 ```
 
-* __Greater & Less__: These statements should be familiar, with a bit of a notation twist. To write a greater than or equal to statement you would you ``= >`` in your statement, and similarly with less than or equal to.  
+* __Greater & Less__: These statements should be familiar, with a bit of a notation twist. To write a greater than or equal to statement you would you ``>=`` in your statement, and similarly with less than or equal to (the inequality goes before the ``=`` in `R`.  
+
+\vspace{0.1cm}
 
 ```{r greaterLess}
+
+-6 * 5 + 2 >= -10 + 1
+
 # write R code to see if
-    # -6 * 5 + 2 is greater than or equal to -10 + 1
     # "raining" is less than or equal to "raining dogs"  
     # TRUE is greater than FALSE
 ```
 
-* __Matrices__: For matrices the above relational statements can be applied across the entire matrix, or to a subset of the matrix (a vector). The relational statement are applied element wise (a step-wise progression through the entries) 
+* __Matrices__: For matrices the above relational statements can be applied across the entire matrix, or to a subset of the matrix (a vector). The relational statement is applied element wise (a step-wise progression through the entries).
+
+\vspace{0.1cm}
 
 ```{r matricies}
 # These dating data, of messages received per week, have been created for you
@@ -37,36 +47,40 @@ okcupid <- c(16, 9, 13, 5, 2, 17, 14)
 match <- c(17, 7, 5, 16, 8, 13, 14)
 messages <- matrix(c(okcupid, match), nrow = 2, byrow = TRUE)
 
-# Use the messages matrix to return a logical matrix that answers the following questions:
+# Use the messages matrix to return a logical matrix
+# When were the messages equal to 13?
+messages >= 13
 
-  # When were the messages equal to 13?
-  # For which days were the number of messages less than or equal to 14? 
+# For which days were the number of messages less than or equal to 14? 
 ```
 
 # Logicals  
 
 These statements allow for us to change or combine the results of the relational statements we discussed before, using "and", "or", or "not". 
 
-* __"and"__ statements evaluate to ``TRUE`` \underline{only if every} relational statement evaluates to ``TRUE``. For example, ``(3 < 5) & (9 > 7)`` would evaluate to ``TRUE`` because \underline{both} relational statements are ``TRUE``. If instead we had ``(3 > 5) & (9 > 7)``, this would evaluate to ``FALSE`` as the first relational statement is ``FALSE``. 
-
-* __"or"__ statements evaluate to ``TRUE`` \underline{if at least one} relational statement evaluates to ``TRUE``. For example, ``(3 > 5) | (9 > 7)`` would evaluate to ``TRUE`` because \underline{one} of the relational statements is ``TRUE`` (the second one). If instead we had ``(3 > 5) & (9 < 7)``, this would evaluate to ``FALSE`` as both relational statements evaluate to ``FALSE``.  
-
+* __"and"__ statements evaluate to ``TRUE`` only if \underline{every} relational statement evaluates to ``TRUE``.   
+    + ``(3 < 5) & (9 > 7)`` would evaluate to ``TRUE`` because \underline{both} relational statements are ``TRUE``  
+    + ``(3 > 5) & (9 > 7)``, this would evaluate to ``FALSE`` as the first relational statement is ``FALSE``   
+    
+* __"or"__ statements evaluate to ``TRUE`` if  \underline{at least one} relational statement evaluates to ``TRUE``.  
+    + ``(3 > 5) | (9 > 7)`` would evaluate to ``TRUE`` because \underline{one} of the relational statements is ``TRUE`` (the second one)  
+    + ``(3 > 5) & (9 < 7)`` would evaluate to ``FALSE`` as both relational statements evaluate to ``FALSE``    
+    
 * __Remark:__ The ``&&`` and ``||`` logical statements \underline{do not} evaluate the same as their single counterparts. Instead, these logical operators evaluate to ``TRUE`` or ``FALSE`` based \underline{only} on the first element of the statement, vector, or matrix.  
 
 ```{r logicals}
 # Using the messages data from above, answer the following questions. 
-
     # Is last under 5 or above 10? 
     # Is last between 15 and 20, excluding 15 but including 20?
 ```
 
 ## Logicals in Your Daily (Statistics) Life  
 
-Many of you may be wondering how the topics above relate to your daily lives in statistical practices, but wait! Let's play with some data some functions that are likely very familiar to you. Import the BlackfootFish dataset and carry out the following questions:  
+Many of you may be wondering how the topics above relate to your daily lives in statistical practices, but wait! Let's play with some data and some functions that are likely very familiar to you. Import the _BlackfootFish_ dataset and carry out the following questions:  
 
 * Which fish do no have \underline{both} length and weight recorded? (hint: use relational operators, logicals, and the ``which`` or ``subset`` functions)  
 
-* Remove the fish you found from the dataset, renaming the new dataset ``BlackfootFish2``. 
+* Remove these fish you found from the dataset, renaming the new dataset ``BlackfootFish2``. 
 
 * Subset these data so that only the Rainbow Trout (RBT) and Brown Trout (Brown) remain. 
 
@@ -90,13 +104,13 @@ if(condition){
 \end{verbatim}
 \end{center}
 
-* the condition inside the parenthesis is what the computer executes to verify that it is ``TRUE``,  
-* if the condition evaluates to ``TRUE`` then the statement inside the ``{}`` is output, and  
-* if the condition is ``FALSE`` nothing is output.
+* the condition inside the parenthesis is what the computer executes to verify if it is ``TRUE``,  
+    + if the condition evaluates to ``TRUE`` then the statement inside the curly braces (``{}``) is output, and  
+    + if the condition is ``FALSE`` nothing is output.
 
 ## Else Statements  
 
-Since whenever an ``if`` statement evaluates to ``FALSE`` nothing is output, you might see why an ``else`` statement might be beneficial! An else statement allows for another statement to be output whenever the ``if`` condition evaluates to ``FALSE``. The ``ifelse`` statement is structured as follows:  
+Since whenever an ``if`` statement evaluates to ``FALSE`` nothing is output, you might see why an ``else`` statement could be beneficial! An else statement allows for another statement to be output whenever the ``if`` condition evaluates to ``FALSE``. The ``ifelse`` statement is structured as follows:  
 
 \begin{center}
 \begin{verbatim}
@@ -152,7 +166,7 @@ else{
     + if the condition is ``FALSE`` the computer moves on to the ``else`` statement, and 
 * the third statement (``{statement3}``) is output. 
 
-\vspace{0.25cm}
+\pagebreak
 
 ```{r if, tidy = TRUE}
 # Using the message dataset, write an if statement that prints "You're popular!" if the number of messages exceeds 10
@@ -168,8 +182,6 @@ else{
     # "Your number of views is average" is printed if messages is between 15 (inclusive) and 10 (exclusive). 
 ```
 
-\pagebreak
-
 # Combine It All!  
 
 ```{r combine1, eval = FALSE}
@@ -180,9 +192,9 @@ ok <- tail(okcupid, 1)
 
 # Code the control-flow construct
 if (___ & ___) {
-  sms <- 2 * (li + fb)
+  sms <- 2 * (ma + ok)
 } elseif (___) {
-  sms <- 0.5 * (li + fb)
+  sms <- 0.5 * (ma + ok)
 } else {
   sms <- ___
 }
@@ -197,11 +209,13 @@ if (___ & ___) {
 
 # Loops  
 
-Loops are a popular way to iterate or replicate a set of instructions. It is no more than creating an automated process by organizing a sequence of steps and grouping the steps that need to be repeated. In general, the advice of many ``R`` users would be to learn about loops, but once you have a clear understanding of them to get rid of them. Loops will give you a detailed view of what is happening and the data you are manipulating. Once you have this understanding, you should put your effort into learning about vectorized alternatives as they pay off in efficiency. These loop alternatives (the apply family) will be covered in the _Simulation Workshop_.  
+Loops are a popular way to iterate or replicate a set of instructions many times. It is no more than creating an automated process by organizing a sequence of steps and grouping together the steps that need to be repeated. In general, the advice of many ``R`` users would be to learn about loops, but once you have a clear understanding of them to get rid of them. Loops will give you a detailed view of what is happening and the data you are manipulating. Once you have this understanding, you should put your effort into learning about vectorized alternatives as they pay off in efficiency. These loop alternatives (the apply family) will be covered in the _Simulation Workshop_.  
 
-Typically in computer science, we separate loops into two types. The loops that execute a process a specified number of times, where the "index" or "counter" is incremented after each cycle are part of the ``for`` loop family. On the other hand, other loops only repeat themselves until a conditional statement is evaluated to be ``FALSE``. These conditional loops belong to the ``while`` family.
+Typically in computer science, we separate loops into two types. The loops that execute a process a specified number of times, where the "index" or "counter" is incremented after each cycle are part of the ``for loop`` family. On the other hand, other loops only repeat themselves until a conditional statement is evaluated to be ``FALSE``. These conditional loops belong to the ``while`` family.
 
 ![Loop Flowchart ](loop_flowchart.png)
+
+\pagebreak
 
 ## For Loops  
 
@@ -217,7 +231,7 @@ The computer marches through this process until the the conditional statement ev
 
 ### Notation  
 
-The for loop is placed between curly braces, which can be placed either directly after the test condition or beneath it. You will find the formatting that you like best for things such as loops and functions, but here is my preferred syntax.  
+The ``for loop`` is placed between curly braces, which can be placed either directly after the test condition or beneath it. You will find the formatting that you like best for things such as loops and functions, but here is my preferred syntax.  
 
 \begin{center}
 \begin{verbatim}
@@ -232,26 +246,28 @@ for(i in 1:n){
 ```{r forloop}
 # Create a vector filled with random t-values, from a distribution with 32 degrees of freedom 
 
-sim <- 100
+sim <- 1:100
 u <- rt(sim, 32)
-print("This loop calculates the square of the elements of vector u")
 
 # Initialize `usq` (could have used a 0 initialization)
 usq <- NA
 
-for(i in 1:sim) {
+for(i in sim) {
   # i-th element of `u1` squared into `i`-th position of `usq`
   usq[i] <- u[i]^2
+  print(c(u[i], usq[i]))
 }
 
 print(i) ## should be the same as sim, unless the loop had issues!
 ```
 
+\pagebreak
+
 ### Nesting For Loops  
 
 Now that you know that for loops can also be nested, you're probably wondering when and why you would be using this in your code.  
 
-```{r nestedloops}
+```{r nestedloops, tidy = TRUE}
 # Create a matrix probabilities of drawing binomials 0-5, from a population of 5, a sample size of 2, and probabilities going from 0-1 by 0.1
 x <- 0:5
 theta <- seq(0, 1, by = 0.1)
@@ -264,11 +280,25 @@ for(i in 1:length(x)){
     probs[i,j] = dbinom(x[i], 5, theta[j])
   }
 }
+
+probs <- as.data.frame(probs)
+
+colnames(probs) <- NA
+
+for(i in 1:length(theta)){
+  colnames(probs)[i] <- paste(expression(theta), "=",  0 + 0.1*(i-1))
+}
+
+rownames(probs) <- apply(expand.grid(replicate(1, "x"), c(0, 1, 2, 3, 4, 5)),  1, paste, collapse = "=")
+
 probs
 ```
+
+\pagebreak
+
 ## While Loops  
 
-The ``while`` loop takes on a similar structure to the ``for`` loop, except that the diamond block now __explicitly__ represents a logical condition. In a ``for`` loop, the only job of this block was to verify that the "counter" of the loop ($i$) was still in the specified range. Now this conditional statement is typically expressed using a relational statement between a "control variable" and a value.   
+The ``while loop`` takes on a similar structure to the ``for loop``, except that the diamond block now __explicitly__ represents a logical condition. In a ``for loop``, the only job of this block was to verify that the "counter" of the loop ($i$) was still in the specified range. Now this conditional statement is typically expressed using a relational statement between a "control variable" and a value.   
 
 
 * If the result of the relational statement is ``FALSE``, the loop is never executed (similar to the "counter" being outside the sequence of numbers). 
@@ -276,8 +306,12 @@ The ``while`` loop takes on a similar structure to the ``for`` loop, except that
 * If the result of the relational statement is ``TRUE``, the block of instructions `i1` is executed, and 
     + the "control variable" is updated in `i2`.  
     
-    
+
+\vspace{0.1cm}
+
 For example, here is how we could rewrite the first for loop as a while loop:  
+
+\vspace{0.1cm}
 
 ```{r while}
 sim <- 100
@@ -319,7 +353,7 @@ Often you will be in the position where you need to perform a task, but you do n
 The function you build will have the same form as described above, where you select the name of the function, the arguments, and the outputs. Some important advice on writing your own functions:  
 
 * Make sure that the name you choose for your function \underline{is not} a reserved word in ``R`` (mean, sd, etc.).  
-* A way to avoid this is to use the help directory to see if that function name already exists (``? function name``).  
+* A way to avoid this is to use the help directory to see if that function name already exists (``?function name``).  
 * It is possible to overwrite the name of an existing function, but it is \underline{not} recommended!  
 
 __Examples:__  
@@ -354,7 +388,7 @@ center <- function(data, center){
 \end{verbatim}
 \end{center}
 
-__Remark:__ It is often useful, when writing a function or a loop to add a ``print()`` output. This allows for you to verify that the process is executing correctly and can save you some headaches!
+__Remark:__ It is often useful, when writing a function or a loop to add a ``print()`` output inside. This allows for you to verify that the process is executing correctly and can save you some major headaches!
 
 
 \pagebreak
@@ -366,22 +400,21 @@ The function should take two arguments (a length and a weight)
 \vspace{0.25cm}
 
 ```{r function}
-BlackfootFish <- read.csv("BlackfootFish.csv")
 ## function code here!
 ```
 
 \vspace{0.25cm}
 
 Now, given the matrix of integers below,  
-    1. use a for loop,    
-    2. an ifelse statement, and  
+    1. use a ``for loop``,    
+    2. an ``ifelse`` statement, and  
     3. the function you defined above,  
     
 to compute the condition number of each fish, and remove that fish from the dataset if it's condition is NA or greater than 2.
 
 \vspace{0.25cm}
 
-```{r }
+```{r, eval = FALSE}
 
 matrix <- data.frame(l = BlackfootFish$length, w = BlackfootFish$weight)
 
