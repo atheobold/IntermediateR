@@ -64,7 +64,7 @@ These statements allow for us to change or combine the results of the relational
     
 * __"or"__ statements evaluate to ``TRUE`` if  \underline{at least one} relational statement evaluates to ``TRUE``.  
     + ``(3 > 5) | (9 > 7)`` would evaluate to ``TRUE`` because \underline{one} of the relational statements is ``TRUE`` (the second one)  
-    + ``(3 > 5) & (9 < 7)`` would evaluate to ``FALSE`` as both relational statements evaluate to ``FALSE``    
+    + ``(3 > 5) | (9 < 7)`` would evaluate to ``FALSE`` as both relational statements evaluate to ``FALSE``    
     
 * __Remark:__ The ``&&`` and ``||`` logical statements \underline{do not} evaluate the same as their single counterparts. Instead, these logical operators evaluate to ``TRUE`` or ``FALSE`` based \underline{only} on the first element of the statement, vector, or matrix.  
 
@@ -106,7 +106,9 @@ if(condition){
 
 * the condition inside the parenthesis is what the computer executes to verify if it is ``TRUE``,  
     + if the condition evaluates to ``TRUE`` then the statement inside the curly braces (``{}``) is output, and  
-    + if the condition is ``FALSE`` nothing is output.
+    + if the condition is ``FALSE`` nothing is output.  
+    
+__Remark:__ In `R` the `if` statement, as described above, will only accept a __single__ value.       
 
 ## Else Statements  
 
@@ -130,7 +132,7 @@ else{
 
 \vspace{0.25cm}
 
-__Remark:__ ``R`` accepts both ``ifelse`` statements structured as outline above, but also ``ifelse`` statements using the built-in ``ifelse()`` function. The function is structured as follows: 
+__Remark:__ ``R`` accepts both ``ifelse`` statements structured as outline above, but also ``ifelse`` statements using the built-in ``ifelse()`` function. This function accepts a vector of inputs and is structured as follows: 
 \begin{center}
 \begin{verbatim}
 ifelse(condition, statement1, statement2),
@@ -298,7 +300,7 @@ probs
 
 ## While Loops  
 
-The ``while loop`` takes on a similar structure to the ``for loop``, except that the diamond block now __explicitly__ represents a logical condition. In a ``for loop``, the only job of this block was to verify that the "counter" of the loop ($i$) was still in the specified range. Now this conditional statement is typically expressed using a relational statement between a "control variable" and a value.   
+The ``while loop`` takes on a similar structure to the ``for loop``, except that the diamond block now __explicitly__ represents a conditional statement. In a ``for loop``, the only job of this block was to verify that the "counter" of the loop ($i$) was still in the specified range, and did not require you to construct a conditional statement. Now this conditional statement is typically expressed using a relational statement between a "control variable" and a value.   
 
 
 * If the result of the relational statement is ``FALSE``, the loop is never executed (similar to the "counter" being outside the sequence of numbers). 
@@ -321,6 +323,7 @@ u <- rt(sim, 32)
 usq <- 0  # Initialize `usq`
 i <- 1  # Initialize the "control variable"
 
+# verifying a relational statement, checking if i is in the range of 1 to sim
 while(i %in% 1:sim){
   # i-th element of `u1` squared into `i`-th position of `usq`
   usq[i] <- u[i]^2
@@ -420,7 +423,7 @@ matrix <- data.frame(l = BlackfootFish$length, w = BlackfootFish$weight)
 
 ```
 
-\pagebreak 
+\vspace{5cm}
 
 # References  
 
