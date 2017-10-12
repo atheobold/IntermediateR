@@ -31,6 +31,7 @@ messages >= 13
 
 #----------------LOGICALS------------------------------------------------------------------------------------
 # Using the messages data from above, answer the following questions. 
+last <- tail(okcupid, 1)
 
 # Is last under 5 or above 10? 
 # Is last between 15 and 20, excluding 15 but including 20?
