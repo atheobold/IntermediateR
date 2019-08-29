@@ -521,7 +521,7 @@ Read in the BlackfootFish dataset and modify the code to write a `for-loop` to f
 \vspace{0.5cm}
 
 ```{r e7, tidy = TRUE, eval = FALSE}
-BlackfootFish <- read.csv("BlackfootFish.csv", header = TRUE)
+BlackfootFish <- read.csv("data/BlackfootFish.csv", header = TRUE)
 
 size <- 1900
 
