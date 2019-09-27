@@ -5,6 +5,11 @@ output: pdf_document
 header-includes: \usepackage{graphicx} \usepackage{amsmath} \usepackage{amssymb}
 ---
 
+<!-- Maybe add a refresher about how to extract elements from a vector and data frame? -->
+
+<!-- Make sure $ are included!  -->
+
+
 # Relational Operators  
 
 Relational operators tell how one object relates to another, where the output is a logical value. There are a variety of relational operators that you have used before in mathematics but take on a slightly different feel in computer science. We will walk through a few examples of different types of relational operators and the rest will be left as exercises.   
@@ -51,7 +56,7 @@ numbers <- c(1, 2, 3, 4, 5)
 
 5 %in% numbers
 
-letters <- c("a", "b", "c", "d")
+letters <- c("a", "b", "c", "d", "e")
 
 c("a", "b") %in% letters
 ```
@@ -75,6 +80,8 @@ __Exercise 1:__
 ```
 
 \vspace{0.5cm}
+
+<!-- Add how to extract elements of a vector using logical values. -->
 
 * __Which__: The `which` statement returns the *indices* of a vector, where a relational statement is satisfied (evaluates to `TRUE`).   
 
@@ -102,9 +109,10 @@ which(x == 8)
 
 okcupid <- c(16, 9, 13, 5, 2, 17, 14)
 match <- c(17, 7, 5, 16, 8, 13, 14)
-messages <- data.frame(okcupid = okcupid, match = match)
+messages <- data.frame(Okcupid = okcupid, Match = match)
 # This makes the data from OkCupid the first column and the data from Match the second column
-row.names(messages) <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
+row.names(messages) <- c("Monday", "Tuesday", "Wednesday", "Thursday",
+                         "Friday", "Saturday", "Sunday")
 
 ```
 
@@ -132,10 +140,9 @@ __Exercise 3:__ Use the messages matrix to return the *indices* of `messages` th
 # when were the messages at OkCupid equal to 13?
 
 
-# when were the number of messages at Match greater than the messages at OkCupid? 
+# when were the messages at OkCupid greater than Match?
 
 
-# Challenge: Use the indicies from above to extract the rows of the message matrix that meet the criteria!
 
 ```
 
@@ -148,9 +155,9 @@ __Exercise 3:__ Use the messages matrix to return the *indices* of `messages` th
 ```{r subset, tidy = TRUE}
 x <- c(3, 5, 7, 9, 11, 13, 15)  
 
-subset(x, x > 2)
+subset(x, x > 6)
 
-# Challenge: Change the which() statement code to a subset() statement, extracting the days that the number of messages at Match greater than the messages at OkCupid
+# Challenge: Change the which() statement code to a subset() statement, extracting the days that the number of messages at Okcupid greater than the messages at Match
 
 ```
 
@@ -303,7 +310,7 @@ y <- -3
 
 if(y < 0){
   "y is a negative number"
-}else{
+} else{
   "y is either positive or zero"
 }
 
@@ -379,9 +386,9 @@ y <- -3
 
 if(y < 0){
   "y is a negative number"
-}else if(y == 0){
+} else if(y == 0){
     "y is zero"
-}else{
+} else{
     "y is positive"}
 
 y <- 5
@@ -410,6 +417,8 @@ if(x %% 2 == 0){
 \pagebreak
 
 # Loops
+
+<!-- Find better figure? -->
 
 \begin{figure}[h!]
 \includegraphics{loop_flowchart.png}
@@ -559,28 +568,11 @@ Well, suppose you wish to manipulate a matrix by setting its elements to specifi
 \vspace{0.25cm}
 
 ```{r, tidy = TRUE}
-# Create a 30 x 30 matrix (of 30 rows and 30 columns)
-mymat <- matrix(nrow = 30, ncol = 10)
-
-# verify the dimensions of mymat
-dim(mymat)
-
-# pull off number of rows for first loop
-dim(mymat)[1]
-
-# pull off number of columns for second loop
-dim(mymat)[2]
-
-
-# For each entry in the matrix: assign values based on its position (the product of two indices)
-for(i in 1:dim(mymat)[1]){
-  for(j in 1:dim(mymat)[2]){
-    mymat[i,j] <- i*j
+for(i in 1:5){
+  for(j in c("a", "b", "c", "d", "e")){
+    print(paste(i, j))
   }
 }
-
-# Just show the upper left 13x10 piece 
-mymat[1:13, ]
 ```
 
 \pagebreak
@@ -603,7 +595,16 @@ Similar to loops, you will often find that you have performed the same task mult
 
 \vspace{0.25cm}
 
-__Example:__ If I wanted to rescale every variable in my dataset so that the quantitative variables have values between 0 and 1. I could use the following formula:  
+```{r}
+# function to convert height in ft + inches to cm 
+# 2.54 
+
+# as group convert people's heights 
+# can do for as many people as we are interested in 
+# possible blurb about loops ??????
+```
+
+__Example:__ If I wanted to rescale every quantitative variable in my dataset so that the variables have values between 0 and 1. I could use the following formula:  
 
 $$y_{scaled} = \frac{y_i - min\{y_1, y_2,..., y_n\}}{max\{y_1, y_2,..., y_n\} - min\{y_1, y_2,..., y_n\}}$$
 
@@ -612,10 +613,13 @@ The following `R` code would carry out this rescaling procedure for the `length`
 \vspace{0.25cm}
 
 ```{r, eval = FALSE, tidy = TRUE}
-BlackfootFish$length <- (BlackfootFish$length - min(BlackfootFish$length, na.rm = TRUE))/
-  (max(BlackfootFish$length, na.rm = TRUE) - min(BlackfootFish$length, na.rm = TRUE))
+BlackfootFish$length <- (BlackfootFish$length - min(BlackfootFish$length, 
+                                                    na.rm = TRUE))/
+  (max(BlackfootFish$length, na.rm = TRUE) - min(BlackfootFish$length, 
+                                                 na.rm = TRUE))
 
-BlackfootFish$weight <- (BlackfootFish$weight - min(BlackfootFish$weight, na.rm = TRUE))/
+BlackfootFish$weight <- (BlackfootFish$weight - min(BlackfootFish$weight, 
+                                                    na.rm = TRUE))/
   (max(BlackfootFish$weight, na.rm = TRUE) - min(BlackfootFish$length, na.rm = TRUE))
 ```  
 
@@ -865,9 +869,6 @@ Now, given the matrix of fish lengths and weights above, use the tools from the 
 # References  
 
 https://www.datacamp.com/community/tutorials/functions-in-r-a-tutorial#gs.5ySzPg0
-
-https://www.datacamp.com/community/tutorials/tutorial-on-loops-in-r
-
 
 # Workshop Materials & Recordings Available:
 
