@@ -125,7 +125,7 @@ dna2 <- "attattaggaacaca"
 ```
 
 * __Equality & Inequality__: This type of operator tells whether an object is 
-equivalent to another object (``==``), or its negation (``!=``).  
+equivalent to another object (`==`), or its negation (`!=`).  
 
 \vspace{0.25cm}
 
@@ -138,8 +138,8 @@ dna1 != dna2
 
 * __Greater & Less__: These statements should be familiar, with a bit of a 
 notation twist. To write a strict greater than or less than statement you would 
-use ``>`` or ``<`` in your statement. To add an equality constraint, you would 
-add a ``=`` sign \underline{after} the inequality statement (``>=`` or ``<=``).  
+use `>` or `<` in your statement. To add an equality constraint, you would 
+add a `=` sign \underline{after} the inequality statement (`>=` or `<=`).  
 
 \vspace{0.25cm}
 
@@ -367,35 +367,35 @@ subset(x, x > 6)
 These statements allow for us to change or combine the results of the relational
 statements we discussed before, using __and__, __or__, or __not__. 
 
-* __and__ statements evaluate to ``TRUE`` only if \underline{every} relational 
-statement evaluates to ``TRUE``.   
-    + ``(3 < 5) & (9 > 7)`` would evaluate to ``TRUE`` because \underline{both}
-    relational statements are ``TRUE``  
-    + ``(3 > 5) & (9 > 7)``, this would evaluate to ``FALSE`` as only one of the
-    relational statements is ``FALSE`` (the first one)     
+* __and__ statements evaluate to `TRUE` only if \underline{every} relational 
+statement evaluates to `TRUE`.   
+    + `(3 < 5) & (9 > 7)` would evaluate to `TRUE` because \underline{both}
+    relational statements are `TRUE`  
+    + `(3 > 5) & (9 > 7)`, this would evaluate to `FALSE` as only one of the
+    relational statements is `FALSE` (the first one)     
 
 \hspace{0.25cm}
 
-* __or__ statements evaluate to ``TRUE`` if  \underline{at least one} relational
-statement evaluates to ``TRUE``.  
-    + ``(3 > 5) | (9 > 7)`` would evaluate to ``TRUE`` because \underline{one} 
-    of the relational statements is ``TRUE`` (the second one)  
-    + ``(3 > 5) | (9 < 7)`` would evaluate to ``FALSE`` as \underline{both} 
-    relational statements evaluate to ``FALSE`` 
+* __or__ statements evaluate to `TRUE` if  \underline{at least one} relational
+statement evaluates to `TRUE`.  
+    + `(3 > 5) | (9 > 7)` would evaluate to `TRUE` because \underline{one} 
+    of the relational statements is `TRUE` (the second one)  
+    + `(3 > 5) | (9 < 7)` would evaluate to `FALSE` as \underline{both} 
+    relational statements evaluate to `FALSE` 
 
 \hspace{0.25cm}
 
 * __not__ statements converts (negates) the statement it proceeds, changing 
 `TRUE` to `FALSE` and `FALSE` to `TRUE`. 
-    + ``is.numeric(5)`` would evaluate to ``TRUE`` because 5 is a number    
-    + ``!is.numeric(5)`` would evaluate to ``FALSE`` as it negates the statement
-    it proceeds (``!TRUE = FALSE``) 
+    + `is.numeric(5)` would evaluate to `TRUE` because 5 is a number    
+    + `!is.numeric(5)` would evaluate to `FALSE` as it negates the statement
+    it proceeds (`!TRUE = FALSE`) 
 
 \hspace{0.25cm}  
 
-* __Remark:__ The ``&&`` and ``||`` logical statements \underline{do not} 
+* __Remark:__ The `&&` and `||` logical statements \underline{do not} 
 evaluate the same as their single counterparts. Instead, these logical operators
-evaluate to ``TRUE`` or ``FALSE`` based \underline{only} on the first element of
+evaluate to `TRUE` or `FALSE` based \underline{only} on the first element of
 the statement, vector, or matrix.  
 
 \vspace{0.5cm}
@@ -449,14 +449,14 @@ good_days
 # Conditional Statements (30 minutes)
 
 Conditional statements utilize relational and logical statements to change the 
-results of your ``R`` code. You may have encountered an ``ifelse`` statement 
-before (or not), but let's breakdown exactly what ``R`` is doing when it 
+results of your `R` code. You may have encountered an `ifelse` statement 
+before (or not), but let's breakdown exactly what `R` is doing when it 
 evaluates them.  
 
 ## If Statements  
 
-First, let's start with an ``if`` statement, the often overlooked building block
-of the ``ifelse`` statement. The ``if`` statement is structured as follows:  
+First, let's start with an `if` statement, the often overlooked building block
+of the `ifelse` statement. The `if` statement is structured as follows:  
 
 \begin{center}
 \begin{verbatim}
@@ -468,9 +468,9 @@ if(condition){
 
 * the condition inside the parenthesis (a relational statement) is what the 
 computer executes to check its logical value,  
-    + if the condition evaluates to ``TRUE`` then the statement inside the curly
-    braces (``{}``) is output, and  
-    + if the condition is ``FALSE`` nothing is output.  
+    + if the condition evaluates to `TRUE` then the statement inside the curly
+    braces (`{}`) is output, and  
+    + if the condition is `FALSE` nothing is output.  
     
 __Remark:__ In `R` the `if` statement, as described above, will only accept a 
 __single__ value (not a vector or matrix).   
@@ -503,10 +503,10 @@ prints "You're popular!" if the number of messages exceeds 10.
 
 ## If Else Statements  
 
-Since whenever an ``if`` statement evaluates to ``FALSE`` nothing is output, you
-might see why an ``else`` statement could be beneficial! An `else` statement 
-allows for a different statement to be output whenever the ``if`` condition 
-evaluates to ``FALSE``. The ``ifelse`` statement is structured as follows:  
+Since whenever an `if` statement evaluates to `FALSE` nothing is output, you
+might see why an `else` statement could be beneficial! An `else` statement 
+allows for a different statement to be output whenever the `if` condition 
+evaluates to `FALSE`. The `ifelse` statement is structured as follows:  
 
 \begin{center}
 \begin{verbatim}
@@ -519,11 +519,11 @@ else{
 \end{verbatim}
 \end{center}
 
-* again, the ``if`` condition is executed first,  
-    + if it evaluates to ``TRUE`` then the first statement (``statement1``) is 
+* again, the `if` condition is executed first,  
+    + if it evaluates to `TRUE` then the first statement (`statement1`) is 
     output,
-    + if the condition is ``FALSE`` the computer moves on to the ``else`` 
-    statement, and the second statement (``statement2``) is output.   
+    + if the condition is `FALSE` the computer moves on to the `else` 
+    statement, and the second statement (`statement2`) is output.   
 
 \vspace{0.1cm}
 
@@ -546,8 +546,8 @@ y <- 5
 
 \vspace{0.5cm}
 
-__Remark:__ ``R`` accepts both ``ifelse`` statements structured as outlined 
-above, but also ``ifelse`` statements using the built-in ``ifelse()`` function. 
+__Remark:__ `R` accepts both `ifelse` statements structured as outlined 
+above, but also `ifelse` statements using the built-in `ifelse()` function. 
 This function accepts __both singular and vector__ inputs and is structured as 
 follows: 
 \begin{center}
@@ -557,9 +557,9 @@ ifelse(condition, statement1, statement2),
 \end{center}
 
 where the first argument is the conditional (relational) statement, the second 
-argument is the statement that is evaluated when the condition is ``TRUE`` 
+argument is the statement that is evaluated when the condition is `TRUE` 
 (`statement1`), and the third statement  is the statement that is evaluated when
-the condition is ``FALSE`` (`statement2`).  
+the condition is `FALSE` (`statement2`).  
 
 \vspace{0.25cm}
 
@@ -571,7 +571,7 @@ ifelse(y < 0, "y is a negative number", "y is either positive or zero")
 
 \vspace{0.5cm}
 
-__Exercise 9:__ Using the if statement from Exercise 5 add the following else 
+__Exercise 9:__ Using the if statement from Exercise 8 add the following else 
 statement: When the if-condition on messages is not met, R prints out "Send more
 messages!". 
 
@@ -589,8 +589,8 @@ messages!".
 ## Else If Statements  
 
 On occasion, you may want to add a third (or fourth, or fifth, ...) condition to
-your ``ifelse`` statement, which is where the ``elseif`` statement comes in. The
-``elseif`` statement is added to the ``ifelse`` as follows:  
+your `ifelse` statement, which is where the `elseif` statement comes in. The
+`elseif` statement is added to the `ifelse` as follows:  
 
 \begin{center}
 \begin{verbatim}
@@ -606,23 +606,23 @@ else{
 \end{verbatim}
 \end{center}
 
-* The ``if`` condition (`condition1`) is executed first,  
+* The `if` condition (`condition1`) is executed first,  
 
-    + if it evaluates to ``TRUE`` then the first statement (``statement1``) is 
+    + if it evaluates to `TRUE` then the first statement (`statement1`) is 
     output,  
     
-    + if the condition is ``FALSE`` the computer moves on to the ``elseif`` 
+    + if the condition is `FALSE` the computer moves on to the `elseif` 
     condition,  
 
 * Now the second condition (`condition2`) is executed, 
 
-    + if it evaluates to ``TRUE`` then the second statement (``statement2``) is 
+    + if it evaluates to `TRUE` then the second statement (`statement2`) is 
     output,  
     
-    + if the condition is ``FALSE`` the computer moves on to the ``else`` 
+    + if the condition is `FALSE` the computer moves on to the `else` 
     statement, and  
 
-* the third statement (``statement3``) is output. 
+* the third statement (`statement3`) is output. 
 
 \vspace{0.25cm}
 
@@ -685,7 +685,7 @@ Typically in data science, we separate loops into two types. The loops that
 execute a process a specified number of times, where the "index" or "counter" is
 incremented after each cycle are part of the `for` loop family. Other loops 
 that only repeat themselves until a conditional statement is evaluated to be 
-``FALSE`` are part of the `while` loop family.
+`FALSE` are part of the `while` loop family.
 
 \pagebreak 
 
@@ -710,7 +710,7 @@ iteration. This could be a simple statement, a block of instructions, or another
 loop (nested loops). 
 
 The computer marches through this process until the repeat decision (condition) 
-evaluates to ``FALSE`` (`i` is not in `seq`).  
+evaluates to `FALSE` (`i` is not in `seq`).  
 
 ### Notation  
 
@@ -856,7 +856,7 @@ for(i in 1:5){
 
 Well, suppose you wish to manipulate a matrix by setting its elements to 
 specific values, based on their row and column position. You will need to use 
-nested ``for loops`` in order to assign each of the matrix's entries a value. 
+nested `for loops` in order to assign each of the matrix's entries a value. 
 
 * The index `i` runs over the rows of the matrix  
 
@@ -895,7 +895,7 @@ As the basic building block of most programming languages, user-defined
 functions constitute "programming" as much as any single abstraction can. If you
 have written a function, you are a computer programmer! 
 
-At this point, you may be familiar with a smattering of ``R`` functions in a few
+At this point, you may be familiar with a smattering of `R` functions in a few
 different packages (e.g. `lm`, `glm`, `str`, `tapply`, etc.). Some of these
 functions take multiple arguments and return a single output, but the best way 
 to learn about the inner workings of functions is to write your own!  
@@ -1048,9 +1048,9 @@ What should we call this variable containing the range of `x`? Some important
 advice on naming variables in `R`: 
 
 * Make sure that the name you choose for your variable \underline{is not} a 
-reserved word in ``R`` (`range`, `mean`, `sd`, `hist`, etc.).
+reserved word in `R` (`range`, `mean`, `sd`, `hist`, etc.).
     + A way to avoid this is to use the help directory to see if that name 
-    already exists (``?functionName``).  
+    already exists (`?functionName`).  
 * It is possible to overwrite the name of an existing variable, but it is 
 \underline{not} recommended! 
 * Variable names cannot begin with a number.  
@@ -1060,17 +1060,19 @@ I suggest we call this intermediate variable `rng` (for range).
 
 \vspace{0.25cm}
 
-__Exercise 14:__ Create an intermediate variable called `rng` that contains the
-range of `x`, using the `range()` function. Make sure that you specify the 
-`na.rm()` option to ignore any NAs in the input vector. 
+__Exercise 14:__ Create another intermediate variable called `rng` that contains 
+the range of the intermediate variable `x`, using the `range()` function. Make 
+sure that you specify the `na.rm()` option to ignore any NAs in the input vector. 
 
 \vspace{0.25cm}
 
 ```{r, eval = FALSE, tidy = TRUE}
-# Create rng 
+# Create rng = the range of x 
 
 
-# Rewrite the code snippet from Excercise 8 to now refer to rng
+# Rewrite the code snippet from Excercise 13 to now 
+# refer to rng instead of min(x) and max(x)
+
 
 ```
 
@@ -1088,7 +1090,7 @@ function!
 
 \vspace{0.25cm}
 
-In ``R`` the function you define will have the following construction:
+In `R` the function you define will have the following construction:
 
 \vspace{0.1cm}
 
@@ -1277,7 +1279,20 @@ workshop (`for loop`, function, conditional and relational statements) to:
 
 # References  
 
-https://www.datacamp.com/community/tutorials/functions-in-r-a-tutorial#gs.5ySzPg0
+`R` for Data Science (Grolemund & Wickham, 2017)   
+
+* Functions: https://r4ds.had.co.nz/functions.html  
+* Iteration: https://r4ds.had.co.nz/iteration.html  
+
+
+Advanced `R` (Wickham, 2015)    
+
+* Subsetting: https://adv-r.hadley.nz/subsetting.html  
+* Control Flow:  https://adv-r.hadley.nz/control-flow.html  
+* Functions: https://adv-r.hadley.nz/functions.html  
+* Conditionals: https://adv-r.hadley.nz/conditions.html  
+* Environments: https://adv-r.hadley.nz/environments.html  
+
 
 # Workshop Materials & Recordings Available:
 
