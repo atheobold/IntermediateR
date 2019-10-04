@@ -180,7 +180,7 @@ __Exercise 3:__
 
 ```{r, tidy = TRUE}
 # write R code to see if
-    # 2 * x + 0.2 is equal to y
+    # 2 * x + 0.3 is equal to y
 
     # "hello" is greater than or equal to "goodbye"
 
@@ -434,11 +434,11 @@ conditions, joined by logicals.
 \vspace{0.25cm}
 
 ```{r subset2, tidy = TRUE}
-bad_days <- subset(messages, okcupid < 6 | match < 6)
+bad_days <- subset(messages, Okcupid < 6 | Match < 6)
 
 bad_days
 
-good_days <- subset(messages, okcupid > 10 & match > 10)
+good_days <- subset(messages, Okcupid > 10 & Match > 10)
 
 good_days
 
