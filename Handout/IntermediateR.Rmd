@@ -181,7 +181,7 @@ __Exercise 3:__
 ```{r, tidy = TRUE}
 # write R code to see if
     # 2 * x + 0.3 is equal to y
-
+    
     # "hello" is greater than or equal to "goodbye"
 
     # TRUE is greater than FALSE
@@ -191,6 +191,25 @@ __Exercise 3:__
 ```
 
 \vspace{0.25cm}
+
+__Comparing Decimal Valued Numbers__:  
+Why does the output from your first equality check not seem right? What do you 
+think might be going on?  
+
+General `R` advice is that the `==` operator should only be used for comparisons
+of integer and Boolean data types. To store decimal valued data types (doubles) 
+`R`, like other programming systems, uses a format (binary floating-point) that 
+doesn't accurately represent a number like 1.3. When the code is interpreted by 
+`R`, the "1.3" is rounded to the nearest number in floating-point format, 
+which results in a small rounding error even before the calculation happens.
+
+This is why, general `R` advice is to use the `all.equal()` function to 
+check for equality of two doubles. This function "is a utility to 
+compare `R` objects `x` and `y` testing *near equality*." This means that the 
+function allows for a little bit of wiggle room in the rounding errors that are
+associated with doubles. 
+
+__Comparing Characters__: 
 
 How did `R` know how to compare the words `hello` and `goodbye`? 
 
