@@ -765,41 +765,41 @@ __Example:__
 
 \vspace{0.25cm}
 
-```{r forloop, eval = FALSE, tidy = TRUE}
-print("This loop calculates the square of elements drawn from a t-distribution")
+```{r forloop, tidy = TRUE}
 
-sim <- 100
-# Define a counter variable to determine how many t-values to use
-u <- rt(sim, 32)
-# Draw sim random t-values, from a t-distribution with 32 degrees of freedom 
-usq <- rep(NA, sim)
-# Initialize usq 
-# Since I know how long it will be, I define the number of NA to fill in 
+for(i in 1:10) {
+print(i)
+  }
 
-for(i in 1:sim) {
-  # i-th element of u` squared into i-th position of usq
-  usq[i] <- u[i]^2
+i ## should be 100 (the same as sim), unless the loop had issues!
+```
+
+\vspace{0.5cm}
+
+Now, let's take add the corresponding entries of two vectors together!  
+
+\vspace{0.25cm}
+
+```{r, eval = FALSE}
+
+x <- seq(1, 10, by = 1)
+y <- seq(10, 28, by = 2)
+
+## create an empty vector to store added quantities
+z <- rep(NA, length(x))
+
+
+for(i in 1:10) {
+# write a loop to store the entries of x added to the entries of y in z
   
-  print(
-    c(u[i],
-      usq[i]
-      )
-    )
 }
 
 i ## should be 100 (the same as sim), unless the loop had issues!
 ```
 
-\begin{verbatim}
-[1] 0.13559322 0.01838552
-[1] 0.21768730 0.04738776
-[1] -0.3459573  0.1196864
-.
-.
-.
-\end{verbatim}
-
 \vspace{0.5cm}
+
+
 
 __Exercise 10:__ How could the above calculation be done outside of a loop?  
 
@@ -960,6 +960,72 @@ When we call the function, the values we pass to it as arguments are assigned
 to those variables so that we can use them inside the function. Inside the 
 function, we use a return statement to send a result back to whoever asked for 
 it.
+
+## Function Scoping   
+
+When writing and using functions, you should be careful to consider where each 
+of the variables you are using are defined. Variables that are defined *within* 
+a function belong to a local environment, and are not accessible from outside of
+the function. Take this example:  
+
+\vspace{0.25cm}
+
+```{r scope, tidy = TRUE}
+x <- 10
+## globally defined variable 
+
+f <- function(){
+  ## locally defined x and y
+  x <- 1 
+  y <- 2
+  c(x, y)
+}
+
+f()
+
+x
+```
+
+\vspace{0.5cm}
+
+We notice that the globally defined value of `x` is not called inside the 
+function, as the function defines `x` within itself, so it does not search for a
+value of `x`! Now look at another example, where `x` is \underline{not} defined 
+within the function.  
+
+\vspace{0.25cm}
+
+```{r scope2, tidy = TRUE}
+
+g <- function(){
+  ## locally defined y
+  y <- 2
+  c(x, y)
+}
+
+x <- 15
+
+g()
+
+x <- 20
+
+g()
+
+```
+
+\vspace{0.5cm}
+
+__Summary:__ 
+
+1. When you call a function, a new environment is created for the function to do
+its work in.   
+2. The new environment is populated with the argument values passed in to the 
+function.  
+3. Objects are looked for _first_ in the function environment.  
+4. If objects are not found in the function environment, the are then looked for
+in the global environment. 
+
+\vspace{0.5cm} 
 
 ### Why Write a Function? 
 
@@ -1204,72 +1270,6 @@ your function.
 
 6. Test your function! Start with a simple example and then go big! 
 
-
-# Function Scoping   
-
-When writing and using functions, you should be careful to consider where each 
-of the variables you are using are defined. Variables that are defined *within* 
-a function belong to a local environment, and are not accessible from outside of
-the function. Take this example:  
-
-\vspace{0.25cm}
-
-```{r scope, tidy = TRUE}
-x <- 10
-## globally defined variable 
-
-f <- function(){
-  ## locally defined x and y
-  x <- 1 
-  y <- 2
-  c(x, y)
-}
-
-f()
-
-x
-```
-
-\vspace{0.5cm}
-
-We notice that the globally defined value of `x` is not called inside the 
-function, as the function defines `x` within itself, so it does not search for a
-value of `x`! Now look at another example, where `x` is \underline{not} defined 
-within the function.  
-
-\vspace{0.25cm}
-
-```{r scope2, tidy = TRUE}
-
-g <- function(){
-  ## locally defined y
-  y <- 2
-  c(x, y)
-}
-
-x <- 15
-
-g()
-
-x <- 20
-
-g()
-
-```
-
-\vspace{0.5cm}
-
-__Summary:__ 
-
-1. When you call a function, a new environment is created for the function to do
-its work in.   
-2. The new environment is populated with the argument values passed in to the 
-function.  
-3. Objects are looked for _first_ in the function environment.  
-4. If objects are not found in the function environment, the are then looked for
-in the global environment. 
-
-\vspace{0.5cm} 
 
 __Exercise 18: Putting it All Together!__
 
