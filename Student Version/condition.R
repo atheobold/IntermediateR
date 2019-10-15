@@ -5,7 +5,8 @@ condition <- function(w, l){
   
   ## checks if w OR l are NA before computing condition
   ifelse(is.na(w) == FALSE | is.na(l) == FALSE, 
-         ((w^(1/3))/l)*50, NA)
+         ((w^(1/3))/l)*50, 
+         NA)
 }
 
 
